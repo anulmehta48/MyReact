@@ -154,6 +154,7 @@ Ans – you should because if you placed your CSS in head to its load first so t
 
 Q26. which company that is not use React?
 Ans Google is not used React otherwise almost all company are used React.
+
 Q27.when is it production ready app?
 Ans-We need to Minifying, removing console, servers, bundle things, optimization, cashing etc. so make you fast running app used bundler or webpack’s like- vite, parcel, webpack’s. 
 
@@ -198,3 +199,26 @@ Q36.what difference between npm and npx?
 Ans- npm=> this is node package manger for installing the packages 
          npx=> execute using npm of npm packages and servers.
 
+
+/*
+  * PARCEL:-- ABOUT INFORMATIONS:-
+  * It create Server for our project
+  * HMR- Hot Module replacement 
+  * File Watching Algorithms-c++
+  * BUILDING
+  * MINIFY
+  * Cleaning Code
+  * Dev and Production build
+  * Super fast build Algorithm
+  * Image optimaization also
+  * caching while development
+  * compressed 
+  * compatible with older version of browser
+  * HTTPS on dev
+  * Port number also manage this
+  * consitent hashing algorithms
+  * it is zero config 
+  * 
+  * 
+  */
+  
