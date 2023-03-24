@@ -3,9 +3,8 @@ import { useParams } from "react-router-dom";
 import { IMG_CDN_URL } from "./config";
 import Shimmer from "../components/ShimmerUI";
 const ReatraMenu = () => {
-  const params = useParams();
-  const { id } = params;
-
+  //how to read dynamic url
+  const { resId } = useParams();
   const [restaurant, setRestaurant] = useState(null);
 
   useEffect(() => {
@@ -14,38 +13,33 @@ const ReatraMenu = () => {
 
   async function getRestorantInfo() {
     const data = await fetch(
-      "https://www.swiggy.com/dapi/menu/v4/full?lat=12.9351929&lng=77.624480699999999&menuId="+id
+      "https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=30.3164945&lng=78.03219179999999&restaurantId=73011&submitAction=ENTER"
     );
     const jsonData = await data.json();
-    // console.log(jsonData.data);
-    setRestaurant(jsonData.data);
+    console.log(jsonData?.data);
+    setRestaurant(jsonData?.data?.cards[0]?.card?.card?.info);
+    console.log(restaurant)
   }
 
-  return !restaurant ? (
-    <Shimmer />
-  ) : (
+  return (
     <div className="menu">
       <div>
-        <h1>Restrantnd id:{id}</h1>
+        <h1>Restrantnd id:{resId}</h1>
         <h2>{restaurant.name}</h2>
-        <img src={IMG_CDN_URL + restaurant.cloudinaryImageId} />
+        {/* <img src={IMG_CDN_URL + restaurant.cloudinaryImageId} />
         <h3>{restaurant.area}</h3>
         <h3>{restaurant.city}</h3>
-        <h3>{restaurant.avgRating}</h3>
-        <h3>{restaurant.costForTwoMsg}</h3>
+        <h3>{restaurant.avgRating}star</h3>
+        <h3>{restaurant.costForTwoMsg}</h3> */}
       </div>
-      <div>
+      {/* <div>
         <h1>Menu</h1>
         <ul>
-          <div>
-            <ul>
-              {Object.values(restaurant?.menu?.items).map((item) => (
-                <li key={item?.id}>{item?.name}</li>
-              ))}
-            </ul>
-          </div>
+          {Object.values(restaurant?.menu?.items).map((item) => (
+            <li key={item.resId}>{item.name}</li>
+          ))}
         </ul>
-      </div>
+      </div> */}
     </div>
   );
 };
